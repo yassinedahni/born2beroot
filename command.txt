@@ -1,0 +1,25 @@
+Command start >>
+
+>> Add user to group 			 	 =  ( usermod -aG sudo your_username )
+>> Affich grp.             			 	 = ( getent group …..)
+>> Affich users          			 	 = ( getent passwd …..)
+>> fichier sudo           			 	 = ( Sudo visudo )
+>> Check status ssh   			 	 = ( sudo systemctl status ssh )
+>> Restart ssh            			 	 = ( sudo service ssh restart )
+>> change port of ssh 			 	 = ( sudo nano /etc/ssh/sshd_config )
+>> Affich port               			 	 = ( sudo grep Port /etc/ssh/sshd_config )
+>> Affich port ufw        			 	 = ( sudo ufw status numbered )
+>> delet port ufw            			 	 = ( sudo ufw delete (Number) )
+>> Allow port on ufw   				 =  ( sudo ufw allow ….. )
+>> Fichier to change pass polices	 = ( sudo nano /etc/pam.d/common-password)
+>> Password -m         			 	 = ( sudo nano /etc/login.defs )
+>> Add grp                 			 	 = ( sudo groupadd ……. )
+>> Add user                 			 	 =  ( sudo adduser ………. )
+>> Affich rules of passwd 		 	 = ( chage -l )
+>> requirt                     			 	 = ( sudo nano /etc/sudoers )
+>> Check hostname         		 	 = ( hostnamectl )
+>> Chase n.hostname 			 	 = ( hostnamectl set-hostname new_hostname )
+>> Script path              			 	 = ( sudo /usr/local/bin/monitoring.sh )
+>> crontab                    			 	 = ( sudo crontab -u root -e )
+
+<< end

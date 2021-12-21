@@ -1,0 +1,93 @@
+Operating system
+____________________________________________________________________________
+
+User1		user2	   user3	           user4		     user5……
+    |			    |		       |	  	               |		    		|
+    |			    |		       |		               |		    		|
+    |			    |		       |		               |		    		|	
+--------------------------------------------------------------------------	   |
+Word	|.  spreadshets.   compileres         text		     web			   |
+proccesor|					            Editors		     browsers 		   |
+															   |
+															   |	
+															   | 
+															   | 
+															   |
+						System/ Application Programs                           |
+						______________________________   			   |	
+						|					      |				   |
+						|	Operating System	      | 			           |
+——————————————|	    |———————|        |__________________|
+						|_______|	Compter	     |_____|
+							    |  Hardware	     | 
+							    |_______________|.   ——————————> Resources like CPU. Memory , I\O Devices	
+
+Types of Os:				Goals of Os:						function of OS:
+
+Batch OS					1) convenience					-it is an interface between User & hardware
+Time sharing Os			2) Efficiency						- allocation of Resources
+Distributed OS				3) both							- Management of Memory, Security, etc.
+Network Os
+Real time Os
+Multi programming/
+Processing / Tasking OS
+____________________________________________________________________________________________________________________________
+
+																(keyboard…)							   (Monitor)	
+Cpu				Disk controller										usb controller							video adapter 	
+																										
+  |				      |												     |										|
+  |				      |			BUS									     |										|	
+   ——————————————————————————————————————|——————————————————————
+										|
+										|
+									Memory
+1) Bootstrap Program : the initial program that runs when a computer is powered up or rebooted.
+				       It is stored in the ROM.
+				        it must know how to load the os and start executing that system.
+					it must locate and load into memory the os Kernel.
+2. Interrupt : the occurrence of an event is usually signaled by an Interrupt from hardware or software.
+			Hardware may trigger an interrupt at any time by sending a signal to the CPU, usually by the way of the system bus.
+3. System call (monitor call): software may trigger n interrupt by executing a special operating called system call. 			
+___________________________________________________________________________________________________________________________
+Storage structure :
+					registers
+expensive			|	     |
+But fast				cache
+&&					|	    |				Volatile (loses its contents when power is removed)
+Small size			Main Memory		
+__________________________|	    |___________________________________________________________________________
+					electronic Disk
+Cost per bit			|	    |
+increases				Magnetic Disk
+		     |	Large	|	    |				Non volatile (resins its contents even when power
+Access time  |	size		optical Disk				is removed.
+increases				| 	    |
+					magnetic Tapes
+______________________________________________________________________________________________________________________________________
+
+Computer System architecture
+———————————————
+Types of computer systems based on number of general purpose processors :
+				1- single processor Systems.
+				2- multiprocessor Systems.
+				3- clustered Systems.
+2 - M.S 
+
+	-Symmetric Multiprocessing							-Asymmetric Multiprocessing 
+	
+	cpu 1____			p1										master
+	cpu 2.     |———>   p2								slave	slave2	slave3
+	cpu 3____			p3								   p1             p2		    p3
+
+3 - C.S
+
+Like multiprocessor systems, clustered systems gather together multiple CPUs to accomplish computational work.
+
+The are composed of two or more individual systems coupled together.
+  
+Can be structured asymmetrically 				or								 symmetrically.
+			             |||														|||
+				- one machine												- two or more hosts run applications
+				 Hot-standby mode											- Monitors each other.
+				- others run applications	

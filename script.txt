@@ -1,0 +1,29 @@
+#!/bin/bash
+arc=$(uname -a)
+CPU=$(lscpu | grep '^CPU(s)' | awk '{print $2}')
+VCP=$(cat /proc/cpuinfo | grep 'processor' | wc -l)
+Mem=$(free -m | grep Mem | awk '{printf" %d/%dMB (%.2f%%)", $3, $2, $3*100/$2}')
+DSU=$(df -Bg --total | grep total | awk '{printf" %d/%dGb (%d%%)", $3*1024, $2, $3*100/$2}')
+CPL=$(top -bn1 | grep %Cpu | awk '{printf "%.1f%%", $4}')
+ltb=$(who -b | grep 'system' | awk '{print $3 " " $4}')
+lvm=$(lsblk | grep 'lvm' | wc -l)
+lvu=$(if [ $lvm = 0 ]; then  echo no; else echo yes; fi)
+TCP=$(ss | grep tcp | wc -l)
+usl=$(users | wc -w)
+IPN=$(hostname -I)
+mac=$(ip link show | grep 'link/ether' | awk '{printf "(%s) ", $2}')
+SUD=$(journalctl -q | grep COMMAND | wc -l)
+
+wall "
+	#Architecture: $arc
+	#CPU physical : $CPU
+	#vCPU : $VCP
+	#Memory Usage: $Mem
+	#Disk Usage: $DSU
+	#CPU load: $CPL
+	#Last boot: $ltb
+	#LVM use: $lvu
+	#Connexions TCP : $TCP ESTABLISHED
+	#User log: $usl
+	#Network: IP $IPN $mac
+	#Sudo : $SUD cmd"

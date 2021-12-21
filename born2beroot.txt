@@ -1,0 +1,105 @@
+Unix is an operating system.
+A set of programs that as a link between the computer and the user,
+-------------
+Y’en a trois portes en system d’exploitation = 1- interface de programmation d’application (API);
+									   2- interface graphique (IHM);
+									   3- commandes (CMD); // linux
+___________________________________________________________________________________________________
+Kernel = 1- execution et ordonnancement des programmes;
+	       2- communication entre les programmes;
+	       3- Gestion des droits et accès
+		4- gestion des ressources materiez de l’ordinateur
+		5- gestion des périphériques
+		6- manipulation des systèmes de fichiers;
+		7- gestions du réseau;
+										                        ___________________________
+												       |Os interface)	|					
+___________________________________________________________________|_____linux (use____________________ |________________________________________________________________________										
+														App									
+														Sys librari 
+														(app-armor)							
+		       												System calls
+______________________________________________________________________________________________________________________________________________________________________
+		|							|(gestions des réseaux)	     |                                       ||                                     |		 		      |
+Kernel	|	+Virtuel files system		|====================|                                       ||                                    |				      |
+		|	+File sys					|		        sockets	      |		schedule		     ||	cpu interconnect       |			    M.B.   |	      
+		|	+Value manager			|			tcp\ip    	      |———————————|—————————>   |  cpu interface ——> | memory (DRAM)
+		|	+Black device interface 		|		        	ip		      |		virtual memory.    ||      				  |				      |	
+		|							| 			Ethernet	       |					     ||					  |				      |
+________________________________________________________________________________________________________________________________________________________________________								device driver                      	       					     |
+								 (I/o bridge)									     |
+——————————————————————————————————————————————|
+									| 					       					      |
+(I\o controller) 						|						(network cards,  port).  |
+HDD									|						network interface          |
+——————————————————————————————————————————————|—————————————————————————————-
+ 														|Hardware|										      
+—————————————————————————————————————————————————————————————————————
+An operating system (OS) is system software that manages computer hardware, software resources, and provides common services for computer programs.
+An operating system is the set of basic programs and utilities that make your computer run. At the core of an operating system is the kernel. The kernel is the most fundamental program on the computer and does all the basic housekeeping and lets you start other programs.
+_________________________________________
+Debian, Red Hat, CentOS. Are some examples of big OS who uses Linux Kernel.
+________________________________
+Debian systems currently use the Linux kernel or the FreeBSD kernel. Linux is a piece of software started by Linus Torvalds and supported by thousands of programmers worldwide. FreeBSD is an operating system including a kernel and other software.
+________________
+The kernel is the essential center of a computer operating system (OS). It is the core that provides basic services for all other parts of the OS. It is the main layer between the OS and hardware, and it helps with process and memory management, file systems, device control and networking.
+______________________________________________
+Linux Security Modules (LSM) is a framework allowing the Linux kernel to support without bias a variety of computer security models. LSM is licensed under the terms of the GNU General Public License and is a standard part of the Linux kernel since Linux 2.6. AppArmor, SELinux, Smack, and TOMOYO Linux are the currently approved security modules in the official kernel.
+_______________________
+An inode is a data structure that stores various information about a file in Linux, such as the access mode (read, write, execute permissions), ownership, file type, file size, group, number of links, etc. Each inode is identified by an integer number. An inode is assigned to a file when it is created.
+Some file systems (most notably ext3) create all inodes when the file system is created. This means that it is possible to run out of storage because all of the inodes are used, although there is available space on the disk. Other file systems (like xfs) create inodes as needed.
+________________________________________
+The LSM (LINUX  SECURITY MODULES)inserts hooks at every point in the kernel where a user can conduct a system call to import kernel objects. This includes inodes and task controle blocks. This is done with a narrow scope that is intended to avoid large and complex change patches. 
+____________________________________
+LINUX in general use Discretionary Access Control (DAC (chmod))|||(Discretionary access control (DAC) is a type of security access control that grants or restricts object access via an access policy determined by an object's owner group and/or subjects. DAC mechanism controls are defined by user identification with supplied credentials during authentication, such as username and password. DACs are discretionary because the subject (owner) can transfer authenticated objects or information access to other users. In other words, the owner determines object access privileges.).|||.
+_____________________________
+Mandatory access control (MAC) is a method by which an operating system limits access to or performance of an object or action, Generally this means that requests for processes, threads, files, ports, or devices are managed based on a specific set of constraints that are tested against authorization rules (policies). As app-Armor, SELinux, Firejail.
+______________________________________________________________________________
+appArmor is a linux Kernel security Module that allows the user to restrict programs with the use of a profile specific to that application. These profiles are designed to delegate capabilities that include sockets, network access file access, and more. Canonical, creators of Ubuntu, are known to be contributors to this security tool. appArmor issei’s implemented through the LSM kernel interface. appArmor is an excellent alternative to the much more difficult to step SELinux. 
+AppArmor is described as 'A Mandatory Access Control (MAC) system which is a kernel (LSM) enhancement to confine programs to a limited set of resources'. There are five alternatives to AppArmor for Linux, Self-Hosted solutions, Fedora, FreeBSD and Xen. The best alternative is Qubes OS, which is both free and Open Source. Other great apps like AppArmor are SELinux (Free, Open Source), CLIP OS (Free, Open Source), Vulture (Free, Open Source) and grsecurity (Paid).
+App-Armor is a supplement to DAC it provides mandatory access controls on top of our discretiomary access controls.  
+App-Armor can be used to reduce the threat footprint to specific applications. AppArmor comes with an example profile that locks down Firefox. Any application could be theoretically enhanced through the use of an appArmor profile. Developers should consider creating AppArmor profiles for their application.
+sum : APpArmor allow applications to do only what they are supposed to do and deny everything else. 
+_________________________________
+The apt-get command is responsible for installation, removal, and updating of software in our system.
+Aptitude and apt-get are two of the popular tools which handle package management. Both are capable of handling all kinds of activities on packages including installation, removal, search etc. But still there are differences between both the tools which make users prefer one over the other. What are those differences that make these two tools to be considered separately is the scope of this article.
+Apt or Advanced Packaging Tool is a free and open source software which gracefully handles software installation and removal. Initially it was designed for Debian’s .deb packages but it has been made compatible with RPM Package Manager.
+Apt is whole command line with no GUI. Whenever invoked from command line along with specifying the name of package to be installed, it finds that package in configured list of sources specified in ‘/etc/apt/sources.list’ along with the list of dependencies for that package and sorts them and automatically installs them along with the current package thus letting user not to worry of installing dependencies.
+It is highly flexible allowing User to control various configurations easily, like: adding any new source to search for packages, apt-pinning i.e. marking any package unavailable during system up-gradation thus making its current version be its final version installed, “smart” upgrade i.e. upgrading most important packages and leaving the least important ones.
+Aptitude is front-end to advanced packaging tool which adds a user interface to the functionality, thus allowing a user to interactively search for a package and install or remove it. Initially created for Debain, Aptitude extends its functionality to RPM based distributions as well.
+Its user interface is based on ncurses library which adds various elements to it commonly seen in GUI’s. One of its highlight is that it can emulate most of apt-get’s command line arguments.
+In all, Aptitude is a higher-level package managers that abstracts low level details, and can operate in both text-based interactive UI mode and even in command line non-interactive mode.
+If you want know the usage of APT and Aptitude with real world examples, you should head over to the following articles.
+____________________________________________________________
+The difference between apt and aptitude are : Apart from main difference being that Aptitude is a high-level package manager while APT is lower-level package manager which can be used by other higher-level package managers, other main highlights that separate these two package managers are:
+1. Aptitude is vaster in functionality than apt-get and integrates functionalities of apt-get and its other variants including apt-mark and apt-cache.
+While apt-get handles all the package installation, up-gradation, system-upgradation, purging package, resolving dependencies etc., Aptitude handles lot more stuff than apt, including functionalities of apt-mark and apt-cache i.e. searching for a package in list of installed packages, marking a package to be automatically or manually installed, holding a package making it unavailable for up-gradation and so on.
+1. While apt-get lacks UI, Aptitude has a text-only and interactive UI
+Apt-get being a lower level package manager is restricted only to command line, while Aptitude being a higher-level tool has a default text-only interactive interface along with option of command-line operation by entering required commands.
+1. Aptitude has a better package management than apt-get
+In many situations involving installation, removal and conflict resolution for packages, Aptitude proves its worth rather than apt-get. Some of the situations include:
+1. While removing any installed package, Aptitude will automatically remove unused packages, while apt-get would need user to explicitly specify this by either adding additional option of ‘—auto-remove’ or specifying ‘apt-get autoremove’.4
+2. To investigate further as to why certain action is getting blocked or why or why-not a certain action should be taken, Aptitude offers 'why' and ‘why-not’ commands.
+Like: Aptitude can find you the reason to install a certain package by looking in the list of installed packages and checking if any of their suggested packages has a dependencies or any of their dependencies suggests that package or so on.
+Like here it searched for the reason to install a package named 'yaws-wiki' to be that it is suggested by a dependency (yaws) which provides a virtual package (httpd-cgi) on which package (dwww) has dependency and package (dwww) is suggested by one of the installed packages named 'doc-base'.
+This feature is missing in apt-get.
+3. While apt-get would probably die-out in case of conflicting action regarding installation or removal of package with a message, Aptitude can suggest possible measures to remove that conflict.
+Aptitude provides a powerful search which can be used to search almost any package not only on the system but also on the entire repository.
+Whereas apt-get needs another apt’s variant i.e. apt-cache to search for a package, Aptitude provides much easier and efficient way to search for a package which is either installed or present in repository but yet to be installed.
+
+_______________________________________________________________
+The sudo command allows you to run programs with the security privileges of another user (by default, as the superuser). It prompts you for your personal password and confirms your request to execute a command by checking a file, called sudoers, which the system administrator configures. Using the sudoers file, system administrators can give certain users or groups access to some or all commands without those users having to know the root password. It also logs all commands and arguments so there is a record of who used it for what, and when.
+_____________________________________________________________________________________________________________________________________________________
+Visualization = is  simply a process creating a software-based (virtual) version of something. Whether that be compute, storage, networking, servers or applications.
+Guest operation machine = vm;
+Host machine = hardware;
+Hypervisor = type 1 = bare metal hypervisor = it works with servers = works directly with hardware.
+		   = type 2 =  hosted hypervisor = host operating system.
+Computer = hardware + software (MAC OS) = hypervisor (virtual box) = virtual machine;
+Hardware Requirements : CPU must support the virtualisition.
+						the proc should support hardware assisted virtualization (HAV).
+						for intel processors this feature is called IntelVT.
+						for AMD professors the technology is called AMD-V.
+The motherboard UEFI/BIOS.
+ ____________________________________________
+
